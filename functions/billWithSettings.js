@@ -5,6 +5,9 @@ var theSmsCost = 0;
 var theWarningLevel = 0;
 var theCriticalLevel = 0;
 
+var callCostTotal = 0;
+var smsCostTotal = 0;
+
 
 function setCallCost(callCost){
     theCallCost = callCost
@@ -41,7 +44,27 @@ function getCriticalLevel (criticalLevel){
     return theCriticalLevel
 }
 
+function makeCall(){
+    callCostTotal += theCallCost;
+    
+}
+function getTotalCallCost(){
 
+    return callCostTotal;
+}
+
+function getTotalCost(){
+
+return callCostTotal + smsCostTotal;
+
+}
+function getTotalSmsCost(){
+return smsCostTotal;
+    
+}
+function sendSms(){
+    smsCostTotal += theSmsCost
+}
 
     return {
         getCallCost,
@@ -51,6 +74,11 @@ function getCriticalLevel (criticalLevel){
         setWarningLevel,
         getWarningLevel,
         setCriticalLevel,
-        getCriticalLevel
+        getCriticalLevel,
+        makeCall,
+        getTotalCallCost,
+        getTotalCost,
+        getTotalSmsCost,
+        sendSms
     }
 }
