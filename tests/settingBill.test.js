@@ -155,3 +155,13 @@ describe('the use value fanction', function () {
 
     });
 });
+
+describe ('warning and critical level function', function(){
+
+    it ('shold return a class name if warning level is reached', function){
+        let settingBill = billWithSettings();
+
+        
+    }
+
+})
