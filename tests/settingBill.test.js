@@ -4,7 +4,7 @@ describe('the bill with settings factory function', function () {
     it('should be able set call cost', function () {
 
         let settingBill = billWithSettings();
-
+        
         settingBill.setCallCost(1.85)
         assert.equal(1.85, settingBill.getCallCost());
 
@@ -87,7 +87,8 @@ describe('the use value fanction', function () {
 
         let settingBill = billWithSettings();
 
-        settingBill.setCallCost(2.50)
+        settingBill.setCriticalLevel(10)
+        settingBill.setCallCost(1.50)
         settingBill.setSmsCost(0.65)
 
         settingBill.makeCall();
@@ -96,8 +97,8 @@ describe('the use value fanction', function () {
         settingBill.makeCall();
 
 
-        assert.equal(10.00, settingBill.getTotalCallCost());
-        assert.equal(10.00, settingBill.getTotalCost());
+        assert.equal(6.00, settingBill.getTotalCallCost());
+        assert.equal(6.00, settingBill.getTotalCost());
         assert.equal(0.00, settingBill.getTotalSmsCost());
 
     });
@@ -156,12 +157,66 @@ describe('the use value fanction', function () {
     });
 });
 
-describe ('warning and critical level function', function(){
+describe( 'warning and crilical level', function(){
 
-    it ('shold return a class name if warning level is reached', function){
+    it ('should return "warning" when the warning level is reached', function(){
+
         let settingBill = billWithSettings();
 
-        
-    }
+        settingBill.setCriticalLevel(10)
+        settingBill.setWarningLevel(5);
+        settingBill.setCallCost(1.50);
+        settingBill.setSmsCost(0.5);
 
+
+        settingBill.makeCall()
+        settingBill.makeCall()
+        settingBill.makeCall()
+        settingBill.makeCall()
+
+        assert.equal('warning', settingBill.totalClassName())
+
+    })
+
+    it ('should return "critical" when the critical level is reached',function(){
+
+        let settingBill = billWithSettings();
+        
+        settingBill.setCriticalLevel(10);
+        settingBill.setSmsCost(0.85);
+        settingBill.setCallCost(2.85);
+
+        settingBill.makeCall()
+        settingBill.makeCall()
+        settingBill.makeCall()
+        settingBill.makeCall()
+        settingBill.makeCall()
+
+
+        assert.equal('critical', settingBill.totalClassName());
+    
+
+    })
+
+
+    it ('should stop the Total cost from increasing once reached the critical level',function(){
+
+        let settingBill = billWithSettings();
+        
+        settingBill.setCriticalLevel(12);
+        settingBill.setSmsCost(0.85);
+        settingBill.setCallCost(2.50);
+
+        settingBill.makeCall()
+        settingBill.makeCall()
+        settingBill.makeCall()
+        settingBill.makeCall()
+        settingBill.makeCall()
+
+
+        assert.equal('critical', settingBill.totalClassName());
+        assert.equal(12, settingBill.getTotalCallCost());
+
+
+})
 })
