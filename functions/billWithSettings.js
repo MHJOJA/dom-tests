@@ -46,13 +46,9 @@ function getCriticalLevel (criticalLevel){
 
 function makeCall(){
     
-    if(!hasReachedCriticalLevel){
+
         callCostTotal += theCallCost;
 
-    }
-
- 
- 
 }    
 
 function getTotalCallCost(){
@@ -70,23 +66,20 @@ return smsCostTotal;
     
 }
 function sendSms(){
-    if (!hasReachedCriticalLevel){
+
         smsCostTotal += theSmsCost
-
-    }
-
-    
+  
 }
 
 function hasReachedCriticalLevel(){
 
-return getTotalCost() >= getCriticalLevel()
+return 
 }
 
 
 function totalClassName(){
     
-    if ( hasReachedCriticalLevel){
+    if ( getTotalCost() >= getCriticalLevel()){
 
         return 'critical'
     };

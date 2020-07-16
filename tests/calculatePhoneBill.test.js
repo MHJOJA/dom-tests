@@ -108,4 +108,5 @@ it('should be able to set critical and warning level', function(){
 
 })
 
+  
   })

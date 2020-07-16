@@ -1,26 +1,26 @@
-function calculateBill (){
+function calculateBill() {
 
-   var theCallCost = 0;
-   var theSmsCost = 0;
-   var theWarningLevel =0;
-   var theCriticalLevel = 0;
+    var theCallCost = 0;
+    var theSmsCost = 0;
+    var theWarningLevel = 0;
+    var theCriticalLevel = 0;
 
 
-    function setCallCost(callCost){
-    
-        theCallCost =callCost;
+    function setCallCost(callCost) {
+
+        theCallCost = callCost;
     }
-    
-    function getCallCost(){
+
+    function getCallCost() {
         return theCallCost
     }
 
-    function setsmsCost(smsCost){
-    
-        theSmsCost =smsCost;
+    function setsmsCost(smsCost) {
+
+        theSmsCost = smsCost;
     }
-    
-    function getSmsCost(){
+
+    function getSmsCost() {
         return theSmsCost
     }
 
@@ -29,19 +29,39 @@ function calculateBill (){
         theWarningLevel = warningLevel;
     }
 
-function getWarningLevel() {
-    return theWarningLevel
-}
+    function getWarningLevel() {
+        return theWarningLevel
+    }
 
-function setCriticalLevel(criticalLevel) {
+    function setCriticalLevel(criticalLevel) {
 
-    theCriticalLevel = criticalLevel;
-}
+        theCriticalLevel = criticalLevel;
+    }
 
-function getCriticalLevel() {
+    function getCriticalLevel() {
 
-    return theCriticalLevel;
-}
+        return theCriticalLevel;
+
+    }
+
+    // function makeCall() {
+
+    // }
+    // function getTotalCallCost() {
+
+    //     return 6.75;
+
+    // }
+
+    // function getTotalSmsCost() {
+    //     return 0;
+
+
+    // }
+
+    // function getTotalCost() {
+    //     return 6.75;
+    // }
 
     return {
         setCallCost,
@@ -51,6 +71,11 @@ function getCriticalLevel() {
         getWarningLevel,
         setWarningLevel,
         setCriticalLevel,
-        getCriticalLevel
+        getCriticalLevel,
+        // makeCall,
+        // getTotalCallCost,
+        // getTotalSmsCost,
+        // getTotalCost,
+      
     }
 }
